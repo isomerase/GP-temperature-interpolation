@@ -19,9 +19,9 @@ lim = 199      #limit of points used (to remove repeat positions or unwanted pos
 xy_observed = np.zeros((2,lim),dtype = float)
 observed_data = np.zeros((3,lim), dtype = float)
 
-#temperatures_time_avg = lh50_data['s']      #time averaged temperature data
-xy_observed[0,:] = lh50_data['p_mm'][:lim,0]          #x (crosswind) axis, observed data
-xy_observed[1,:] = lh50_data['p_mm'][:lim,1] #Richard: is this the y axis?
+#temperatures_time_avg = pos_data['s']      #time averaged temperature data
+xy_observed[0,:] = pos_data['p_mm'][:lim,0]          #x (crosswind) axis, observed data
+xy_observed[1,:] = pos_data['p_mm'][:lim,1] #Richard: is this the y axis?
 
 #for 3d interpolation:
 xyz_observed = np.zeros((3,len(xy_observed.T)),dtype = float)       #observed locations
