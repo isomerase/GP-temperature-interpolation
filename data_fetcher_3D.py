@@ -22,6 +22,7 @@ Created on Fri Feb 13 11:19:31 2015
 import scipy.io as io
 import os.path
 import numpy as np
+import pickle #for saving Python files as pickle binaries
 
 def load_temp_data(mydir):
     print "Loading temperature data"
@@ -61,6 +62,9 @@ def load_positional_data(mydir):
     pos_data = io.loadmat(pos_data_file) #x,y positional data
     return pos_data
 
+def save_obj(obj, name ):
+    with open('saved_objects/'+ name + '.pkl', 'wb') as f:
+        pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)
 
 #==============================================================================
 # lh50_data.keys() ==> ['p_in', 'p_mm', 'p', 's', 'store', '__header__', '__globals__',  '__version__']
@@ -76,11 +80,11 @@ def main():
     mydir = os.path.dirname(__file__)
     print "Current directory is: \n", mydir, "\n \n"
     T_raw = load_temp_data(mydir)
-#    np.savetxt("T_raw.txt", T_raw) #Save to txt
+    save_obj(T_raw, "T_raw")
     zpos = load_elevation_data(mydir)
-#    np.savetxt("zpos.txt", zpos)
+    save_obj(zpos, "zpos")
     pos_data = load_positional_data(mydir)
-#    np.savetxt("pos_data.txt", pos_data)
+    save_obj(pos_data, "pos_data")
     return mydir, T_raw, zpos, pos_data
 
     
