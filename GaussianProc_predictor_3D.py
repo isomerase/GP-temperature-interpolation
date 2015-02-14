@@ -20,7 +20,7 @@ import matplotlib.pyplot as plt
 
 import process_3D_data
 
-T_sd = process_3D_data.main()
+T_sd, T_time_avg_3d, xyz_observed = process_3D_data.main() #load vars from second script
 
 #prediction locations, make ##finish your sentences, points deducted -Richard
 #TODO: what are these magic numbers?
@@ -36,6 +36,7 @@ nugget =  (T_sd/T_time_avg_3d)**2
 nugget = nugget       #deletes repeated measurment locations
   
 #TODO: make section into separate function
+
    
 gp = gaussian_process.GaussianProcess(corr = 'absolute_exponential',
                                       theta0 = 1./25, 
