@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-fetch_3D_temp_data
+fetch_3D_data
 
 Input:
 User input filename string

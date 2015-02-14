@@ -8,9 +8,9 @@ Created on Fri Feb 13 14:24:19 2015
 @author: Richard Decal, decal@uw.edu
 """
 
-import fetch_3D_temp_data
+import data_fetcher_3D
 
-mydir, T_raw, zpos, pos_data = fetch_3D_temp_data.main()
+mydir, T_raw, zpos, pos_data = data_fetcher_3D.main()
 
 #TODO: average these repeated points, instead of deleting them with lim
 lim = 199      #limit of points used (to remove repeat positions or unwanted positions)
