@@ -21,7 +21,7 @@ observed_data = np.zeros((3,lim), dtype = float)
 
 #temperatures_time_avg = pos_data['s']      #time averaged temperature data
 xy_observed[0,:] = pos_data['p_mm'][:lim,0]          #x (crosswind) axis, observed data
-xy_observed[1,:] = pos_data['p_mm'][:lim,1] #Richard: is this the y axis?
+xy_observed[1,:] = pos_data['p_mm'][:lim,1] #Is this the y axis? -Richard
 
 #for 3d interpolation:
 xyz_observed = np.zeros((3,len(xy_observed.T)),dtype = float)       #observed locations
@@ -39,7 +39,8 @@ for i in range(1,4):
     T_time_avg_3d = np.append(T_time_avg_3d, T_slice, axis = 1)       #resized tempearture data
     T_sd = np.append(T_sd,T_slice_sd,axis = 1)
 
-#look for and remove nans () 
+#look for and remove nans ()
+#TODO (maybe): turn this into a function
 if np.any(np.isnan(T_time_avg_3d)):
     NaN_locations = np.where(np.isnan(T_time_avg_3d))      #find the indices of Nans
     T_time_avg_3d = np.delete(T_time_avg_3d, NaN_locations)
