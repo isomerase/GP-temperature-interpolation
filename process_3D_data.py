@@ -2,15 +2,23 @@
 """
 3D_data_processor
 
-lines 48-85 of main code
-
 Created on Fri Feb 13 14:24:19 2015
 @author: Richard Decal, decal@uw.edu
 """
+import pickle
+import numpy as np
 
-import data_fetcher_3D
+def load_obj(name ):
+    """load Python pickle files"""
+    with open('saved_objects/' + name + '.pkl', 'rb') as f:
+        return pickle.load(f)
 
-mydir, T_raw, zpos, pos_data = data_fetcher_3D.main()
+def load_our_objects():
+    """I got sick of re-running the first script, so I saved it's output to pickle files"""
+    T_raw =  load_obj('T_raw')
+    zpos =  load_obj('zpos')
+    pos_data =  load_obj('pos_data')
+    return T_raw, zpos, pos_data
 
 #TODO: average these repeated points, instead of deleting them with lim
 lim = 199      #limit of points used (to remove repeat positions or unwanted positions)
@@ -18,9 +26,11 @@ lim = 199      #limit of points used (to remove repeat positions or unwanted pos
 def main():
     """doing this so that we can call this file as a module. Would be way more ideal if this entire page
     was broken up into unit functions and made Pythonic"""
+    T_raw, zpos, pos_data = load_our_objects() #load all our variables from the first script
+    
     #Make array of observed locations (x,y)
-    xy_observed = np.zeros((2,lim),dtype = float)
-    observed_data = np.zeros((3,lim), dtype = float)
+    xy_observed = np.zeros((2,lim), dtype = float)
+#    observed_data = np.zeros((3,lim), dtype = float) #commented out because was not being used... vestigial code?
     
     #temperatures_time_avg = pos_data['s']      #time averaged temperature data
     xy_observed[0,:] = pos_data['p_mm'][:lim,0]          #x (crosswind) axis, observed data
@@ -55,7 +65,8 @@ def main():
     observed_data_3d[:3,:] = xyz_observed
     observed_data_3d[3,:] = T_time_avg_3d.T
     
-    return T_sd
+    #send off our variables to the GP script
+    return T_sd, T_time_avg_3d, xyz_observed
 
 
 if __name__ == "__main__":
