@@ -18,6 +18,9 @@ from sklearn import gaussian_process
 import numpy as np
 import matplotlib.pyplot as plt
 
+import process_3D_data
+
+T_sd = process_3D_data.main()
 
 #prediction locations, make ##finish your sentences, points deducted -Richard
 #TODO: what are these magic numbers?
