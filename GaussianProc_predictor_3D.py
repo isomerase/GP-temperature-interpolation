@@ -19,14 +19,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-#prediction locations, make 
-
+#prediction locations, make ##finish your sentences, points deducted -Richard
+#TODO: what are these magic numbers?
 x_predict = np.atleast_2d(np.linspace(0, 254, 25))       #2 mm prediction sites
 y_predict = np.atleast_2d(np.linspace(100, 850, 15))
 z_predict = np.atleast_2d(np.linspace(80, 280, 20))
 
 x1,x2,x3 = np.meshgrid(x_predict, y_predict, z_predict)
-xyz_predict = np.vstack([x1.reshape(x1.size), x2.reshape(x2.size), x3.reshape(x3.size)]).T
+xyz_predict = np.vstack([x1.reshape(x1.size), x2.reshape(x2.size), x3.reshape(x3.size)]).T #TODO: what is this line for?
 
 #calculate noise (required)
 nugget =  (T_sd/T_time_avg_3d)**2
