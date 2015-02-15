@@ -45,7 +45,7 @@ def gaussianProcess(T_sd, T_time_avg_3d, xyz_observed):
     """
     TODO: feed params for gp (corr, thetas, etc) into the parent fxn?
     """
-    xyz_predict = predictionLocations()
+    xyz_predict = predictionLocations() #not sure if the best practice would be to put this line inside main()
     mynugget = noiseCalc(T_sd, T_time_avg_3d)    
     
     gp = gaussian_process.GaussianProcess(corr = 'absolute_exponential',
