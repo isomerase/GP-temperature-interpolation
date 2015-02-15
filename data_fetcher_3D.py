@@ -63,6 +63,12 @@ def load_positional_data(mydir):
     return pos_data
 
 def save_obj(obj, name ):
+    """
+    Pickle files are binary blobs you can use for saving any Python object of any type
+    and then be able to load that pickle and it work exactly as expected.
+    Using this to replace numpy.savetxt(), which was throwing errors because it wanted to save the NaNs as floats. 
+    The pickles are also sweet because I can mindlessly save any variable without worrying if it's a numpy object, or Python dict, or whatever.
+    """
     with open('saved_objects/'+ name + '.pkl', 'wb') as f:
         pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)
 
