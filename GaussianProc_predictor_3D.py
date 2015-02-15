@@ -5,6 +5,8 @@
 Ideally, this script should
 take (user?) inputs to determine x_predicted, y_predicte, and z_predicted arrays
 take inputs from the second script to enter in data (that is, the temperature (T_time_avg_3d) and position (xyz_observed) data that was augmented in the second script).
+
+TODO:
 output the interpolated data. Specifically, T_prediction, y_prediction_MSE, and sigma.
 
 Having at least the GP interpolation as a function
@@ -20,7 +22,7 @@ import matplotlib.pyplot as plt
 
 import process_3D_data
 
-T_sd = process_3D_data.main()
+T_sd, T_time_avg_3d, xyz_observed = process_3D_data.main() #load vars from second script
 
 #prediction locations, make ##finish your sentences, points deducted -Richard
 #TODO: what are these magic numbers?
